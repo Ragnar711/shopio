@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import products from "../products";
 import { Col, Row, Image, ListGroup, Card, Button } from "react-bootstrap";
+import Tab from "react-bootstrap/Tab";
+import Tabs from "react-bootstrap/Tabs";
 import Rating from "../components/Rating";
 
 const ProductScreen = () => {
@@ -67,6 +69,26 @@ const ProductScreen = () => {
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Col md={12}>
+                    <Tabs
+                        defaultActiveKey="specs"
+                        id="uncontrolled-tab-example"
+                        className="mb-3"
+                    >
+                        <Tab eventKey="spec" title="Technical Details">
+                            <ul>
+                                {product.specs.map((spec) => (
+                                    <li>{spec}</li>
+                                ))}
+                            </ul>
+                        </Tab>
+                        <Tab eventKey="reviews" title="Reviews">
+                            Reviews
+                        </Tab>
+                    </Tabs>
                 </Col>
             </Row>
         </>
