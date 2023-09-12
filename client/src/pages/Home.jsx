@@ -5,9 +5,9 @@ import Product from "../components/Product";
 
 const Home = () => {
     const customStyle = {
-        color: "#333",
-        textAlign: "center",
-        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)",
+        color: "#555",
+        fontWeight: "600",
+        textShadow: "3px 3px 6px rgba(0, 0, 0, 0.3)",
     };
     return (
         <>
