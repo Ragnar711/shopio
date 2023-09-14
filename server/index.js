@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { productsRouter } from "./controllers/products.js";
+import { productsRouter } from "./routes/products.js";
 
 import dotenv from "dotenv";
 dotenv.config();
@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(productsRouter);
+app.use("/api/products", productsRouter);
 
 const port = process.env.PORT || 5000;
 
