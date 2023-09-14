@@ -1,6 +1,5 @@
 const products = [
     {
-        _id: "1",
         name: "Iphone",
         image: "/images/Iphone.jpeg",
         description:
@@ -24,7 +23,6 @@ const products = [
         ],
     },
     {
-        _id: "2",
         name: "iPad",
         image: "/images/Ipad.jpeg",
         description:
@@ -48,7 +46,6 @@ const products = [
         ],
     },
     {
-        _id: "3",
         name: "Smartwatch",
         image: "/images/watch.jpeg",
         description:
@@ -71,7 +68,6 @@ const products = [
         ],
     },
     {
-        _id: "4",
         name: "AirPods",
         image: "/images/airpods.jpeg",
         description:
@@ -91,7 +87,6 @@ const products = [
         ],
     },
     {
-        _id: "5",
         name: "MacBook Pro",
         image: "/images/mac.jpeg",
         description:
