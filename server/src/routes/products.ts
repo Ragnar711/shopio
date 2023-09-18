@@ -1,28 +1,16 @@
-import { Router, Request, Response } from "express";
-import Product from "../models/product";
-import asyncHandler from "../middleware/asyncHandler";
+import { Router } from "express";
+import { getProducts, getProduct } from "../controller/products";
 
 const router = Router();
 
-router.get(
-    "/",
-    asyncHandler(async (req: Request, res: Response) => {
-        const products = await Product.find();
-        res.status(200).json(products);
-    })
-);
+// @desc Get a list of products
+// @route GET /api/products
+// @access public
+router.get("/", getProducts);
 
-router.get(
-    "/:id",
-    asyncHandler(async (req: Request, res: Response) => {
-        const id = req.params.id;
-        const product = await Product.findById(id);
-
-        if (!product)
-            return res.status(404).json({ message: "Product not found" });
-
-        res.status(200).json(product);
-    })
-);
+// @desc Get a product
+// @route GET /api/products/:id
+// @access public
+router.get("/:id", getProduct);
 
 export { router as productsRouter };
