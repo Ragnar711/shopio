@@ -6,7 +6,10 @@
     "scripts": {
         "client": "npm run start --prefix client",
         "server": "npm run dev --prefix server",
-        "dev": "conc \"npm run server\" \"npm run client\""
+        "dev": "conc \"npm run server\" \"npm run client\"",
+        "pkg:client": "npm install --prefix client",
+        "pkg:server": "npm install --prefix server",
+        "pkg": "conc \"npm install\" \"npm run pkg:client\" \"npm run pkg:server\""
     },
     "keywords": [],
     "author": "",
