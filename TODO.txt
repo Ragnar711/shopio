@@ -1,0 +1,2 @@
+// TODO: Add Redis for caching
+// TODO: Add Swagger for API documentation
