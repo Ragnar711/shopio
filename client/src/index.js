@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
 import Home from "./pages/Home";
 import ProductScreen from "./pages/ProductScreen";
 
@@ -28,5 +27,3 @@ root.render(
         <RouterProvider router={router} />
     </React.StrictMode>
 );
-
-reportWebVitals();
