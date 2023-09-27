@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Product from "../components/Product";
-import Axios from "redaxios";
+import { useGetProductsQuery } from "../slices/productsApiSlice";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const Home = () => {
-    const [products, setProducts] = useState([]);
+    const { data: products, isLoading, error } = useGetProductsQuery();
 
     const customStyle = {
         color: "#555",
@@ -12,33 +13,31 @@ const Home = () => {
         textShadow: "3px 3px 6px rgba(0, 0, 0, 0.3)",
     };
 
-    const fetchProducts = async () => {
-        try {
-            const response = await Axios.get(
-                "http://localhost:5000/api/products"
+    const renderContent = () => {
+        if (error) {
+            return (
+                <Message
+                    variant="danger"
+                    children={error?.data?.message || error.error}
+                />
             );
-            setProducts(response.data);
-        } catch (error) {
-            console.log(error);
+        } else {
+            return (
+                <>
+                    <h1 style={customStyle}>Latest Products</h1>
+                    <Row>
+                        {products.map((product) => (
+                            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                                <Product product={product} />
+                            </Col>
+                        ))}
+                    </Row>
+                </>
+            );
         }
     };
 
-    useEffect(() => {
-        fetchProducts();
-    }, []);
-
-    return (
-        <>
-            <h1 style={customStyle}>Latest Products</h1>
-            <Row>
-                {products.map((product) => (
-                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                        <Product product={product} />
-                    </Col>
-                ))}
-            </Row>
-        </>
-    );
+    return <>{isLoading ? <Loader /> : renderContent()}</>;
 };
 
 export default Home;
